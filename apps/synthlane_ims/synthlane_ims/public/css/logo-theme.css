@@ -1,0 +1,88 @@
+/* Logo Theme Switching CSS */
+
+/* Default logo (for light mode) - make it dark/black */
+.navbar-brand img,
+.app-logo,
+.brand-logo,
+.navbar-brand svg,
+.app-logo svg,
+.brand-logo svg,
+.navbar .navbar-brand img,
+.navbar .navbar-brand svg,
+.sidebar .app-logo img,
+.sidebar .app-logo svg,
+.navbar-logo img,
+.navbar-logo svg {
+    /* Invert colors for light mode - makes white logo dark on light background */
+    filter: invert(1) !important;
+}
+
+/* Dark mode logo adjustments - make it bright/white */
+/* Frappe uses body class for dark theme */
+body.dark-theme .navbar-brand img,
+body.dark-theme .app-logo,
+body.dark-theme .brand-logo,
+body.dark-theme .navbar-brand svg,
+body.dark-theme .app-logo svg,
+body.dark-theme .brand-logo svg,
+body.dark-theme .navbar .navbar-brand img,
+body.dark-theme .navbar .navbar-brand svg,
+body.dark-theme .sidebar .app-logo img,
+body.dark-theme .sidebar .app-logo svg,
+body.dark-theme .navbar-logo img,
+body.dark-theme .navbar-logo svg,
+/* Also check for data-theme attribute */
+[data-theme="dark"] .navbar-brand img,
+[data-theme="dark"] .app-logo,
+[data-theme="dark"] .brand-logo,
+[data-theme="dark"] .navbar-brand svg,
+[data-theme="dark"] .app-logo svg,
+[data-theme="dark"] .brand-logo svg,
+[data-theme="dark"] .navbar .navbar-brand img,
+[data-theme="dark"] .navbar .navbar-brand svg,
+[data-theme="dark"] .sidebar .app-logo img,
+[data-theme="dark"] .sidebar .app-logo svg,
+[data-theme="dark"] .navbar-logo img,
+[data-theme="dark"] .navbar-logo svg {
+    /* Remove invert for dark mode - makes logo bright/white on dark background */
+    filter: none !important;
+}
+
+/* Alternative: Use different logo files for different themes */
+/* Uncomment this section if you want to use separate logo files */
+
+/*
+.light-logo {
+    display: block;
+}
+
+.dark-logo {
+    display: none;
+}
+
+[data-theme="dark"] .light-logo,
+.dark-theme .light-logo {
+    display: none;
+}
+
+[data-theme="dark"] .dark-logo,
+.dark-theme .dark-logo {
+    display: block;
+}
+*/
+
+/* Specific logo adjustments for different areas */
+.navbar .navbar-brand img {
+    max-height: 40px;
+}
+
+.sidebar .app-logo img {
+    max-height: 32px;
+}
+
+/* Ensure logo is visible in all contexts */
+.app-logo img,
+.brand-logo img {
+    max-width: 100%;
+    height: auto;
+}

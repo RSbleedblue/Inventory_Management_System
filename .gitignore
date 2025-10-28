@@ -1,0 +1,213 @@
+# Frappe Framework .gitignore
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Frappe specific
+sites/*/private/
+sites/*/public/files/
+sites/*/locks/
+sites/*/logs/
+sites/*/backups/
+sites/*/error-snapshots/
+sites/*/task-logs/
+sites/*/worker-logs/
+sites/*/scheduler-logs/
+sites/*/frappe.log*
+sites/*/scheduler.log*
+sites/*/worker.log*
+sites/*/worker.error.log*
+sites/*/database.log*
+sites/*/backup.log*
+sites/*/bench.log*
+
+# Bench specific
+config/pids/
+config/scheduler_process
+config/site_config.lock
+config/bench_build.lock
+patches.txt
+
+# Redis
+*.rdb
+*.aof
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.yarn-integrity
+
+# Assets
+sites/assets/
+sites/apps.json
+sites/apps.txt
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Translations
+*.mo
+*.pot
+
+# Certificates
+certs/
+*.pem
+*.key
+*.crt
+
+# Docker
+.dockerignore
+
+# Backup files
+*.bak
+*.backup
+
+# Frappe build files
+frappe/public/dist/
+frappe/public/js/
+frappe/public/css/
+frappe/public/fonts/
+frappe/public/images/
+
+# ERPNext build files
+erpnext/public/dist/
+erpnext/public/js/
+erpnext/public/css/
+erpnext/public/fonts/
+erpnext/public/images/
+
+# Custom app build files
+synthlane_ims/public/dist/
+synthlane_ims/public/js/
+synthlane_ims/public/css/
+synthlane_ims/public/fonts/
+synthlane_ims/public/images/
+
+# Frappe specific build artifacts
+frappe/build/
+erpnext/build/
+synthlane_ims/build/
+
+# Site specific files that shouldn't be committed
+sites/*/site_config.json
+sites/*/site_config_backup.json
+
+# Development files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Test files
+test-results/
+coverage/
+
+# Documentation build
+docs/_build/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# PEP 582
+__pypackages__/
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# Frappe specific development files
+frappe-bench/

@@ -1,0 +1,52 @@
+services:
+  mariadb:
+    image: mariadb:10.8
+    container_name: frappe-mariadb
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: frappe_db
+      MYSQL_USER: frappe
+      MYSQL_PASSWORD: frappe123
+    ports:
+      - "3306:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+      - /Users/rivansh/synthlane-bench/database.conf:/etc/mysql/conf.d/custom.cnf:ro
+      - /Users/rivansh/synthlane-bench/certs:/etc/mysql/certs:ro
+
+  redis-cache:
+    image: redis:7-alpine
+    container_name: frappe-redis-cache
+    restart: unless-stopped
+    ports:
+      - "13001:6379"
+    volumes:
+      - redis_cache_data:/data
+    command: redis-server --appendonly yes --requirepass ""
+
+  redis-queue:
+    image: redis:7-alpine
+    container_name: frappe-redis-queue
+    restart: unless-stopped
+    ports:
+      - "11001:6379"
+    volumes:
+      - redis_queue_data:/data
+    command: redis-server --appendonly yes --requirepass ""
+
+  redis-socketio:
+    image: redis:7-alpine
+    container_name: frappe-redis-socketio
+    restart: unless-stopped
+    ports:
+      - "13002:6379"
+    volumes:
+      - redis_socketio_data:/data
+    command: redis-server --appendonly yes --requirepass ""
+
+volumes:
+  mariadb_data:
+  redis_cache_data:
+  redis_queue_data:
+  redis_socketio_data:
