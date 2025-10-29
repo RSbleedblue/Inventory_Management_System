@@ -22,7 +22,7 @@ def get_energy_points_heatmap_data(user: str, date: str | None):
 		.where(eps_log["type"] != "Review")
 		.where(Date(eps_log.creation) > Date(date) - Interval(years=1))
 		.where(Date(eps_log.creation) < Date(date) + Interval(years=1))
-		.groupby(Date(eps_log.creation))
+		.groupby(UnixTimestamp(Date(eps_log.creation)))
 		.orderby(Date(eps_log.creation), order=Order.asc)
 		.run()
 	)

@@ -539,8 +539,8 @@ Condition,الحالة,
 Configure,تهيئة,
 Configure {0},تكوين {0},
 Confirmed orders from Customers.,طلبات مؤكدة من الزبائن.,
-Connect Amazon with ERPNext,الاتصال الأمازون مع ERPNext,
-Connect Shopify with ERPNext,قم بتوصيل Shopify باستخدام ERPNext,
+Connect Amazon with Synthlane Inventory Management System,الاتصال الأمازون مع Synthlane Inventory Management System,
+Connect Shopify with Synthlane Inventory Management System,قم بتوصيل Shopify باستخدام Synthlane Inventory Management System,
 Connect to Quickbooks,الاتصال Quickbooks,
 Connected to QuickBooks,متصلة QuickBooks,
 Connecting to QuickBooks,الاتصال QuickBooks,
@@ -831,8 +831,8 @@ Duplicate {0} found in the table,مكرر {0} موجود في الجدول,
 Duration in Days,المدة في أيام,
 Duties and Taxes,الرسوم والضرائب,
 E-Invoicing Information Missing,الفواتير الإلكترونية معلومات مفقودة,
-ERPNext Demo,ERPNext تجريبي,
-ERPNext Settings,إعدادات ERPNext,
+Synthlane Inventory Management System Demo,Synthlane Inventory Management System تجريبي,
+Synthlane Inventory Management System Settings,إعدادات Synthlane Inventory Management System,
 Earliest,أولا,
 Earnest Money,العربون,
 Edit,تصحيح,
@@ -1052,7 +1052,7 @@ Get from Patient Encounter,الحصول على من لقاء المريض,
 Getting Started,ابدء,
 GitHub Sync ID,معرف مزامنة جيثب,
 Global settings for all manufacturing processes.,إعدادات العالمية لجميع عمليات التصنيع.,
-Go to the Desktop and start using ERPNext,ERPNext اذهب إلى سطح المكتب والبدء في استخدام,
+Go to the Desktop and start using Synthlane Inventory Management System,Synthlane Inventory Management System اذهب إلى سطح المكتب والبدء في استخدام,
 GoCardless SEPA Mandate,GoCardless SEPA التكليف,
 GoCardless payment gateway settings,إعدادات بوابة الدفع GoCardless,
 Goal and Procedure,الهدف والإجراءات,
@@ -2090,7 +2090,7 @@ Raw Materials,مواد أولية,
 Raw Materials cannot be blank.,لا يمكن ترك المواد الخام فارغة.,
 Re-open,اعادة فتح,
 Read blog,قراءة بلوق,
-Read the ERPNext Manual,اقرا دليل مستخدم  ERPNext,
+Read the Synthlane Inventory Management System Manual,اقرا دليل مستخدم  Synthlane Inventory Management System,
 Reading Uploaded File,قراءة ملف تم الرفع,
 Real Estate,العقارات,
 Reason For Putting On Hold,سبب لوضع في الانتظار,
@@ -2465,7 +2465,7 @@ Setup SMS gateway settings,إعدادات العبارة  SMS,
 Setup cheque dimensions for printing,أبعاد الاختيار الإعداد للطباعة,
 Setup default values for POS Invoices,إعداد القيم الافتراضية لفواتير نقاط البيع,
 Setup mode of POS (Online / Offline),وضع الإعداد بوس (الانترنت / غير متصل),
-Setup your Institute in ERPNext,إعداد المعهد الخاص بك في إربنكست,
+Setup your Institute in Synthlane Inventory Management System,إعداد المعهد الخاص بك في إربنكست,
 Share Balance,رصيد السهم,
 Share Ledger,مشاركة دفتر الأستاذ,
 Share Management,إدارة المشاركة,
@@ -2745,7 +2745,7 @@ This is a root item group and cannot be edited.,هذه هي مجموعة الب�
 This is a root sales person and cannot be edited.,هذا هو الشخص المبيعات الجذرية والتي لا يمكن تحريرها.,
 This is a root supplier group and cannot be edited.,هذه مجموعة مورِّد جذر ولا يمكن تحريرها.,
 This is a root territory and cannot be edited.,هذا هو الجذر الأرض والتي لا يمكن تحريرها.,
-This is an example website auto-generated from ERPNext,هذا مثال موقع ولدت لصناعة السيارات من ERPNext,
+This is an example website auto-generated from Synthlane Inventory Management System,هذا مثال موقع ولدت لصناعة السيارات من Synthlane Inventory Management System,
 This is based on logs against this Vehicle. See timeline below for details,وذلك بناء على السجلات مقابل هذه المركبة. للمزيد انظر التسلسل الزمني أدناه,
 This is based on stock movement. See {0} for details,ويستند هذا على حركة المخزون. راجع {0} لمزيد من التفاصيل,
 This is based on the Time Sheets created against this project,ويستند هذا على جداول زمنية خلق ضد هذا المشروع,
@@ -2792,7 +2792,7 @@ To State,إلى الدولة,
 To Warehouse,لمستودع,
 To create a Payment Request reference document is required,لإنشاء مستند مرجع طلب الدفع مطلوب,
 "To filter based on Party, select Party Type first",لتصفية استنادا الحزب، حدد حزب النوع الأول,
-"To get the best out of ERPNext, we recommend that you take some time and watch these help videos.",للحصول على أفضل النتائج من ERPNext، ونحن نوصي بأن تأخذ بعض الوقت ومشاهدة أشرطة الفيديو هذه المساعدة.,
+"To get the best out of Synthlane Inventory Management System, we recommend that you take some time and watch these help videos.",للحصول على أفضل النتائج من Synthlane Inventory Management System، ونحن نوصي بأن تأخذ بعض الوقت ومشاهدة أشرطة الفيديو هذه المساعدة.,
 "To include tax in row {0} in Item rate, taxes in rows {1} must also be included",ل تشمل الضريبة في الصف {0} في معدل الإغلاق ، {1} ويجب أيضا تضمين الضرائب في الصفوف,
 To make Customer based incentive schemes.,لجعل خطط الحوافز على أساس العملاء.,
 "To merge, following properties must be same for both items",لدمج ، يجب أن يكون نفس الخصائص التالية ل كلا البندين,
@@ -3010,7 +3010,7 @@ Week,أسبوع,
 Weekly,الأسبوعية,
 "Weight is mentioned,\nPlease mention ""Weight UOM"" too","يذكر الوزن، \n يرجى ذكر ""الوزن UOM"" للغاية",
 Welcome email sent,رسالة الترحيب تم أرسالها,
-Welcome to ERPNext,مرحبًا بكم في ERPNext,
+Welcome to Synthlane Inventory Management System,مرحبًا بكم في Synthlane Inventory Management System,
 What do you need help with?,ما الذى تحتاج المساعدة به؟,
 What does it do?,مجال عمل الشركة؟,
 Where manufacturing operations are carried.,حيث تتم عمليات التصنيع.,
@@ -3337,8 +3337,8 @@ Compare List function takes on list arguments,تأخذ وظيفة قائمة ا�
 Complete,أكمال,
 Completed,أكتمل,
 Completed Quantity,الكمية المكتملة,
-Connect your Exotel Account to ERPNext and track call logs,قم بتوصيل حسابك في Exotel بـ ERPNext وتتبع سجلات المكالمات,
-Connect your bank accounts to ERPNext,قم بتوصيل حساباتك المصرفية بـ ERPNext,
+Connect your Exotel Account to Synthlane Inventory Management System and track call logs,قم بتوصيل حسابك في Exotel بـ Synthlane Inventory Management System وتتبع سجلات المكالمات,
+Connect your bank accounts to Synthlane Inventory Management System,قم بتوصيل حساباتك المصرفية بـ Synthlane Inventory Management System,
 Contact Seller,تواصل مع البائع,
 Continue,استمر,
 Cost Center: {0} does not exist,مركز التكلفة: {0} غير موجود,
@@ -3387,7 +3387,7 @@ Duplicate project has been created,تم إنشاء مشروع مكرر,
 E-Way Bill JSON can only be generated from a submitted document,لا يمكن إنشاء الفاتورة الإلكترونية JSON إلا من وثيقة مقدمة,
 E-Way Bill JSON can only be generated from submitted document,لا يمكن إنشاء فاتورة JSON الإلكترونية إلا من المستند المقدم,
 E-Way Bill JSON cannot be generated for Sales Return as of now,لا يمكن إنشاء الفاتورة الإلكترونية JSON لعائد المبيعات اعتبارًا من الآن,
-ERPNext could not find any matching payment entry,تعذر على ERPNext العثور على أي إدخال دفع مطابق,
+Synthlane Inventory Management System could not find any matching payment entry,تعذر على Synthlane Inventory Management System العثور على أي إدخال دفع مطابق,
 Earliest Age,أقدم عمر,
 Edit Details,عدل التفاصيل,
 Either GST Transporter ID or Vehicle No is required if Mode of Transport is Road,يلزم تقديم معرف ناقل GST أو السيارة رقم إذا كان وضع النقل هو الطريق,
@@ -3715,7 +3715,7 @@ The selected payment entry should be linked with a creditor bank transaction,ي�
 The selected payment entry should be linked with a debtor bank transaction,يجب ربط إدخال الدفع المحدد بمعاملة بنكية للمدين,
 The total allocated amount ({0}) is greated than the paid amount ({1}).,إجمالي المبلغ المخصص ({0}) أكبر من المبلغ المدفوع ({1}).,
 This Service Level Agreement is specific to Customer {0},اتفاقية مستوى الخدمة هذه تخص العميل {0},
-This action will unlink this account from any external service integrating ERPNext with your bank accounts. It cannot be undone. Are you certain ?,سيؤدي هذا الإجراء إلى إلغاء ربط هذا الحساب بأي خدمة خارجية تدمج ERPNext مع حساباتك المصرفية. لا يمكن التراجع. هل أنت متأكد؟,
+This action will unlink this account from any external service integrating Synthlane Inventory Management System with your bank accounts. It cannot be undone. Are you certain ?,سيؤدي هذا الإجراء إلى إلغاء ربط هذا الحساب بأي خدمة خارجية تدمج Synthlane Inventory Management System مع حساباتك المصرفية. لا يمكن التراجع. هل أنت متأكد؟,
 This bank account is already synchronized,هذا الحساب المصرفي متزامن بالفعل,
 This bank transaction is already fully reconciled,تمت تسوية هذه الصفقة المصرفية بالفعل بالكامل,
 This page keeps track of items you want to buy from sellers.,تتبع هذه الصفحة العناصر التي ترغب في شرائها من البائعين.,
@@ -3874,7 +3874,7 @@ received from,مستلم من,
 to,إلى,
 Cards,بطاقات,
 Percentage,النسبة المئوية,
-Failed to setup defaults for country {0}. Please contact support@erpnext.com,فشل في إعداد الإعدادات الافتراضية للبلد {0}. يرجى الاتصال support@erpnext.com,
+Failed to setup defaults for country {0}. Please contact support@Synthlane Inventory Management System.com,فشل في إعداد الإعدادات الافتراضية للبلد {0}. يرجى الاتصال support@Synthlane Inventory Management System.com,
 Row #{0}: Item {1} is not a Serialized/Batched Item. It cannot have a Serial No/Batch No against it.,الصف # {0}: العنصر {1} ليس عنصرًا تسلسليًا / مُجمَّع. لا يمكن أن يكون له رقم مسلسل / لا دفعة ضده.,
 Please set {0},الرجاء تعيين {0},
 Please set {0},الرجاء تعيين {0},supplier
@@ -3976,7 +3976,7 @@ Therapy Type,نوع العلاج,
 Therapy Plan,خطة العلاج,
 Therapy Session,جلسة علاجية,
 Motor Assessment Scale,مقياس تقييم المحرك,
-[Important] [ERPNext] Auto Reorder Errors,[هام] [ERPNext] إعادة ترتيب الأخطاء تلقائيًا,
+[Important] [Synthlane Inventory Management System] Auto Reorder Errors,[هام] [Synthlane Inventory Management System] إعادة ترتيب الأخطاء تلقائيًا,
 "Regards,",مع تحياتي،,
 The following {0} were created: {1},تم إنشاء {0} التالية: {1},
 Work Orders,طلبات العمل,
@@ -5548,7 +5548,7 @@ YES,نعم,
 Student Siblings,الإخوة والأخوات الطلاب,
 Topic Content,محتوى الموضوع,
 Amazon MWS Settings,إعدادات الأمازون MWS,
-ERPNext Integrations,دمج ERPNext,
+Synthlane Inventory Management System Integrations,دمج Synthlane Inventory Management System,
 Enable Amazon,تمكين الأمازون,
 MWS Credentials,MWS بيانات الاعتماد,
 Seller ID,معرف البائع,
@@ -5626,7 +5626,7 @@ Default Customer,العميل الافتراضي,
 Customer Group will set to selected group while syncing customers from Shopify,سيتم تعيين مجموعة العملاء على مجموعة محددة أثناء مزامنة العملاء من Shopify,
 For Company,للشركة,
 Cash Account will used for Sales Invoice creation,سيستخدم الحساب النقدي لإنشاء فاتورة المبيعات,
-Update Price from Shopify To ERPNext Price List,تحديث السعر من Shopify إلى قائمة أسعار ERPNext,
+Update Price from Shopify To Synthlane Inventory Management System Price List,تحديث السعر من Shopify إلى قائمة أسعار Synthlane Inventory Management System,
 Default Warehouse to to create Sales Order and Delivery Note,المستودع الافتراضي لإنشاء أمر مبيعات وتسليم ملاحظة,
 Sales Order Series,سلسلة أوامر المبيعات,
 Import Delivery Notes from Shopify on Shipment,ملاحظات التسليم التسليم من Shopify على الشحن,
@@ -5635,7 +5635,7 @@ Import Sales Invoice from Shopify if Payment is marked,فاتورة مبيعات
 Sales Invoice Series,سلسلة فاتورة المبيعات,
 Shopify Tax Account,Shopify حساب الضرائب,
 Shopify Tax/Shipping Title,Shopify الضرائب / عنوان الشحن,
-ERPNext Account,حساب ERPNext,
+Synthlane Inventory Management System Account,حساب Synthlane Inventory Management System,
 Shopify Webhook Detail,Shopify التفاصيل Webhook,
 Webhook ID,معرف Webhook,
 Tally Migration,تالي الهجرة,
@@ -5651,8 +5651,8 @@ Tally Company,شركة تالي,
 Company Name as per Imported Tally Data,اسم الشركة حسب بيانات Tally المستوردة,
 Default UOM,افتراضي UOM,
 UOM in case unspecified in imported data,وحدة القياس في حالة عدم تحديدها في البيانات المستوردة,
-ERPNext Company,شركة ERPNext,
-Your Company set in ERPNext,تم تعيين شركتك في ERPNext,
+Synthlane Inventory Management System Company,شركة Synthlane Inventory Management System,
+Your Company set in Synthlane Inventory Management System,تم تعيين شركتك في Synthlane Inventory Management System,
 Processed Files,الملفات المعالجة,
 Parties,حفلات,
 UOMs,وحدات القياس,
@@ -6018,7 +6018,7 @@ Employment Type,نوع الوظيفة,
 Emergency Contact,الاتصال في حالات الطوارئ,
 Emergency Contact Name,الطوارئ اسم الاتصال,
 Emergency Phone,هاتف حالات الطوارئ,
-ERPNext User,ERPNext المستخدم,
+Synthlane Inventory Management System User,Synthlane Inventory Management System المستخدم,
 "System User (login) ID. If set, it will become default for all HR forms.",هوية مستخدم النظام (تسجيل الدخول). إذا وضع، وسوف تصبح الافتراضية لكافة أشكال HR.,
 Create User Permission,إنشاء صلاحية المستخدم,
 This will restrict user access to other employee records,سيؤدي هذا إلى تقييد وصول المستخدم لسجلات الموظفين الأخرى,
@@ -6089,7 +6089,7 @@ Employee External Work History,سجل عمل الموظف خارج الشركة,
 Total Experience,مجموع الخبرة,
 Default Leave Policy,سياسة الإجازة الافتراضية,
 Employee Group Table,جدول مجموعة الموظفين,
-ERPNext User ID,معرف المستخدم ERPNext,
+Synthlane Inventory Management System User ID,معرف المستخدم Synthlane Inventory Management System,
 Employee Internal Work History,سجل عمل الموظف داخل الشركة,
 Activities,أنشطة,
 Employee Onboarding Activity,نشاط Onboarding الموظف,
@@ -6309,7 +6309,7 @@ Material Request Planning,تخطيط طلب المواد,
 Include Non Stock Items,تشمل الاصناف الغير مخزنية,
 Include Subcontracted Items,تضمين العناصر من الباطن,
 Ignore Existing Projected Quantity,تجاهل الكمية الموجودة المتوقعة,
-"To know more about projected quantity, <a href=""https://erpnext.com/docs/user/manual/en/stock/projected-quantity"" style=""text-decoration: underline;"" target=""_blank"">click here</a>.","لمعرفة المزيد عن الكمية المتوقعة ، <a href=""https://erpnext.com/docs/user/manual/en/stock/projected-quantity"" style=""text-decoration: underline;"" target=""_blank"">انقر هنا</a> .",
+"To know more about projected quantity, <a href=""https://Synthlane Inventory Management System.com/docs/user/manual/en/stock/projected-quantity"" style=""text-decoration: underline;"" target=""_blank"">click here</a>.","لمعرفة المزيد عن الكمية المتوقعة ، <a href=""https://Synthlane Inventory Management System.com/docs/user/manual/en/stock/projected-quantity"" style=""text-decoration: underline;"" target=""_blank"">انقر هنا</a> .",
 Download Required Materials,تحميل المواد المطلوبة,
 Get Raw Materials For Production,الحصول على المواد الخام للإنتاج,
 Total Planned Qty,مجموع الكمية المخطط لها,
@@ -7113,7 +7113,7 @@ You can use any valid Bootstrap 4 markup in this field. It will be shown on your
 Total Projected Qty,توقعات مجموع الكمية,
 Hub Publishing Details,هاب تفاصيل النشر,
 Publish in Hub,نشر في المحور,
-Publish Item to hub.erpnext.com,نشر البند إلى hub.erpnext.com,
+Publish Item to hub.Synthlane Inventory Management System.com,نشر البند إلى hub.Synthlane Inventory Management System.com,
 Hub Category to Publish,فئة المحور للنشر,
 Hub Warehouse,مركز مستودع,
 "Publish ""In Stock"" or ""Not in Stock"" on Hub based on stock available in this warehouse.",نشر &quot;في الأوراق المالية&quot; أو &quot;غير متوفر&quot; على المحور استنادا إلى الأسهم المتوفرة في هذا المستودع.,
@@ -7780,8 +7780,8 @@ Depreciation Posting Date,تاريخ ترحيل الإهلاك,
 "By default, the Supplier Name is set as per the Supplier Name entered. If you want Suppliers to be named by a  ",بشكل افتراضي ، يتم تعيين اسم المورد وفقًا لاسم المورد الذي تم إدخاله. إذا كنت تريد تسمية الموردين بواسطة أ,
  choose the 'Naming Series' option.,اختر خيار &quot;سلسلة التسمية&quot;.,
 Configure the default Price List when creating a new Purchase transaction. Item prices will be fetched from this Price List.,تكوين قائمة الأسعار الافتراضية عند إنشاء معاملة شراء جديدة. سيتم جلب أسعار العناصر من قائمة الأسعار هذه.,
-"If this option is configured 'Yes', ERPNext will prevent you from creating a Purchase Invoice or Receipt without creating a Purchase Order first. This configuration can be overridden for a particular supplier by enabling the 'Allow Purchase Invoice Creation Without Purchase Order' checkbox in the Supplier master.",إذا تم تكوين هذا الخيار &quot;نعم&quot; ، سيمنعك ERPNext من إنشاء فاتورة شراء أو إيصال دون إنشاء أمر شراء أولاً. يمكن تجاوز هذا التكوين لمورد معين عن طريق تمكين مربع الاختيار &quot;السماح بإنشاء فاتورة الشراء بدون أمر شراء&quot; في مدير المورد.,
-"If this option is configured 'Yes', ERPNext will prevent you from creating a Purchase Invoice without creating a Purchase Receipt first. This configuration can be overridden for a particular supplier by enabling the 'Allow Purchase Invoice Creation Without Purchase Receipt' checkbox in the Supplier master.",إذا تم تكوين هذا الخيار &quot;نعم&quot; ، سيمنعك ERPNext من إنشاء فاتورة شراء دون إنشاء إيصال شراء أولاً. يمكن تجاوز هذا التكوين لمورد معين عن طريق تمكين مربع الاختيار &quot;السماح بإنشاء فاتورة الشراء بدون إيصال شراء&quot; في مدير المورد.,
+"If this option is configured 'Yes', Synthlane Inventory Management System will prevent you from creating a Purchase Invoice or Receipt without creating a Purchase Order first. This configuration can be overridden for a particular supplier by enabling the 'Allow Purchase Invoice Creation Without Purchase Order' checkbox in the Supplier master.",إذا تم تكوين هذا الخيار &quot;نعم&quot; ، سيمنعك Synthlane Inventory Management System من إنشاء فاتورة شراء أو إيصال دون إنشاء أمر شراء أولاً. يمكن تجاوز هذا التكوين لمورد معين عن طريق تمكين مربع الاختيار &quot;السماح بإنشاء فاتورة الشراء بدون أمر شراء&quot; في مدير المورد.,
+"If this option is configured 'Yes', Synthlane Inventory Management System will prevent you from creating a Purchase Invoice without creating a Purchase Receipt first. This configuration can be overridden for a particular supplier by enabling the 'Allow Purchase Invoice Creation Without Purchase Receipt' checkbox in the Supplier master.",إذا تم تكوين هذا الخيار &quot;نعم&quot; ، سيمنعك Synthlane Inventory Management System من إنشاء فاتورة شراء دون إنشاء إيصال شراء أولاً. يمكن تجاوز هذا التكوين لمورد معين عن طريق تمكين مربع الاختيار &quot;السماح بإنشاء فاتورة الشراء بدون إيصال شراء&quot; في مدير المورد.,
 Quantity & Stock,الكمية والمخزون,
 Call Details,تفاصيل المكالمة,
 Authorised By,مرخص بها من,
@@ -7992,7 +7992,7 @@ Membership Print Format,تنسيق طباعة العضوية,
 Invoice Print Format,تنسيق طباعة الفاتورة,
 Revoke <Key></Key>,سحب او إبطال&lt;Key&gt;&lt;/Key&gt;,
 You can learn more about memberships in the manual. ,يمكنك معرفة المزيد عن العضويات في الدليل.,
-ERPNext Docs,مستندات ERPNext,
+Synthlane Inventory Management System Docs,مستندات Synthlane Inventory Management System,
 Regenerate Webhook Secret,إعادة إنشاء Webhook Secret,
 Generate Webhook Secret,إنشاء Webhook Secret,
 Copy Webhook URL,نسخ عنوان URL للويب هوك,
@@ -8001,8 +8001,8 @@ Feedback By,ردود الفعل من,
 Manufacturing Section,قسم التصنيع,
 "By default, the Customer Name is set as per the Full Name entered. If you want Customers to be named by a ",بشكل افتراضي ، يتم تعيين اسم العميل وفقًا للاسم الكامل الذي تم إدخاله. إذا كنت تريد تسمية العملاء بواسطة أ,
 Configure the default Price List when creating a new Sales transaction. Item prices will be fetched from this Price List.,تكوين قائمة الأسعار الافتراضية عند إنشاء معاملة مبيعات جديدة. سيتم جلب أسعار العناصر من قائمة الأسعار هذه.,
-"If this option is configured 'Yes', ERPNext will prevent you from creating a Sales Invoice or Delivery Note without creating a Sales Order first. This configuration can be overridden for a particular Customer by enabling the 'Allow Sales Invoice Creation Without Sales Order' checkbox in the Customer master.",إذا تم تكوين هذا الخيار &quot;نعم&quot; ، سيمنعك ERPNext من إنشاء فاتورة مبيعات أو مذكرة تسليم دون إنشاء أمر مبيعات أولاً. يمكن تجاوز هذا التكوين لعميل معين عن طريق تمكين مربع الاختيار &quot;السماح بإنشاء فاتورة المبيعات بدون طلب مبيعات&quot; في مدير العميل.,
-"If this option is configured 'Yes', ERPNext will prevent you from creating a Sales Invoice without creating a Delivery Note first. This configuration can be overridden for a particular Customer by enabling the 'Allow Sales Invoice Creation Without Delivery Note' checkbox in the Customer master.",إذا تم تكوين هذا الخيار &quot;نعم&quot; ، سيمنعك ERPNext من إنشاء فاتورة مبيعات دون إنشاء مذكرة تسليم أولاً. يمكن تجاوز هذا التكوين لعميل معين عن طريق تمكين مربع الاختيار &quot;السماح بإنشاء فاتورة المبيعات بدون إشعار التسليم&quot; في مدير العميل.,
+"If this option is configured 'Yes', Synthlane Inventory Management System will prevent you from creating a Sales Invoice or Delivery Note without creating a Sales Order first. This configuration can be overridden for a particular Customer by enabling the 'Allow Sales Invoice Creation Without Sales Order' checkbox in the Customer master.",إذا تم تكوين هذا الخيار &quot;نعم&quot; ، سيمنعك Synthlane Inventory Management System من إنشاء فاتورة مبيعات أو مذكرة تسليم دون إنشاء أمر مبيعات أولاً. يمكن تجاوز هذا التكوين لعميل معين عن طريق تمكين مربع الاختيار &quot;السماح بإنشاء فاتورة المبيعات بدون طلب مبيعات&quot; في مدير العميل.,
+"If this option is configured 'Yes', Synthlane Inventory Management System will prevent you from creating a Sales Invoice without creating a Delivery Note first. This configuration can be overridden for a particular Customer by enabling the 'Allow Sales Invoice Creation Without Delivery Note' checkbox in the Customer master.",إذا تم تكوين هذا الخيار &quot;نعم&quot; ، سيمنعك Synthlane Inventory Management System من إنشاء فاتورة مبيعات دون إنشاء مذكرة تسليم أولاً. يمكن تجاوز هذا التكوين لعميل معين عن طريق تمكين مربع الاختيار &quot;السماح بإنشاء فاتورة المبيعات بدون إشعار التسليم&quot; في مدير العميل.,
 Default Warehouse for Sales Return,المستودع الافتراضي لعائد المبيعات,
 Default In Transit Warehouse,افتراضي في مستودع النقل,
 Enable Perpetual Inventory For Non Stock Items,تمكين الجرد الدائم للبنود غير المخزنة,
