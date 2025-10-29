@@ -1,52 +1,185 @@
+version: '3.8'
+
 services:
+  # Database
   mariadb:
-    image: mariadb:10.8
-    container_name: frappe-mariadb
-    restart: unless-stopped
+    image: mariadb:10.6
     environment:
-      MYSQL_ROOT_PASSWORD: 123456
-      MYSQL_DATABASE: frappe_db
-      MYSQL_USER: frappe
-      MYSQL_PASSWORD: frappe123
-    ports:
-      - "3306:3306"
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-synthlane_root_pass}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-synthlane_db}
+      MYSQL_USER: ${MYSQL_USER:-synthlane_user}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-synthlane_pass}
     volumes:
       - mariadb_data:/var/lib/mysql
-      - /Users/rivansh/synthlane-bench/database.conf:/etc/mysql/conf.d/custom.cnf:ro
-      - /Users/rivansh/synthlane-bench/certs:/etc/mysql/certs:ro
+      - ./mariadb.cnf:/etc/mysql/conf.d/custom.cnf:ro
+    ports:
+      - "3306:3306"
+    restart: unless-stopped
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD:-synthlane_root_pass}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
+  # Redis Cache
   redis-cache:
     image: redis:7-alpine
-    container_name: frappe-redis-cache
-    restart: unless-stopped
-    ports:
-      - "13001:6379"
     volumes:
       - redis_cache_data:/data
-    command: redis-server --appendonly yes --requirepass ""
+      - ./config/redis_cache.conf:/usr/local/etc/redis/redis.conf:ro
+    ports:
+      - "13001:6379"
+    restart: unless-stopped
+    command: redis-server /usr/local/etc/redis/redis.conf
 
+  # Redis Queue
   redis-queue:
     image: redis:7-alpine
-    container_name: frappe-redis-queue
-    restart: unless-stopped
-    ports:
-      - "11001:6379"
     volumes:
       - redis_queue_data:/data
-    command: redis-server --appendonly yes --requirepass ""
+      - ./config/redis_queue.conf:/usr/local/etc/redis/redis.conf:ro
+    ports:
+      - "11001:6379"
+    restart: unless-stopped
+    command: redis-server /usr/local/etc/redis/redis.conf
 
+  # Redis SocketIO
   redis-socketio:
     image: redis:7-alpine
-    container_name: frappe-redis-socketio
-    restart: unless-stopped
-    ports:
-      - "13002:6379"
     volumes:
       - redis_socketio_data:/data
-    command: redis-server --appendonly yes --requirepass ""
+    ports:
+      - "13002:6379"
+    restart: unless-stopped
+
+  # Frappe Backend
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - FRAPPE_SITE=synthlane.localhost
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-synthlane_root_pass}
+      - MYSQL_DATABASE=${MYSQL_DATABASE:-synthlane_db}
+      - MYSQL_USER=${MYSQL_USER:-synthlane_user}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD:-synthlane_pass}
+    volumes:
+      - sites_data:/opt/synthlane-bench/sites
+      - logs_data:/opt/synthlane-bench/logs
+    ports:
+      - "8000:8000"
+    depends_on:
+      mariadb:
+        condition: service_healthy
+      redis-cache:
+        condition: service_started
+      redis-queue:
+        condition: service_started
+      redis-socketio:
+        condition: service_started
+    restart: unless-stopped
+    command: >
+      sh -c "
+        bench --site synthlane.localhost migrate &&
+        bench --site synthlane.localhost clear-cache &&
+        bench --site synthlane.localhost serve --port 8000 --host 0.0.0.0
+      "
+
+  # Background Scheduler
+  scheduler:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - FRAPPE_SITE=synthlane.localhost
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-synthlane_root_pass}
+      - MYSQL_DATABASE=${MYSQL_DATABASE:-synthlane_db}
+      - MYSQL_USER=${MYSQL_USER:-synthlane_user}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD:-synthlane_pass}
+    volumes:
+      - sites_data:/opt/synthlane-bench/sites
+      - logs_data:/opt/synthlane-bench/logs
+    depends_on:
+      mariadb:
+        condition: service_healthy
+      redis-cache:
+        condition: service_started
+      redis-queue:
+        condition: service_started
+    restart: unless-stopped
+    command: bench --site synthlane.localhost schedule
+
+  # Background Worker
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - FRAPPE_SITE=synthlane.localhost
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-synthlane_root_pass}
+      - MYSQL_DATABASE=${MYSQL_DATABASE:-synthlane_db}
+      - MYSQL_USER=${MYSQL_USER:-synthlane_user}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD:-synthlane_pass}
+    volumes:
+      - sites_data:/opt/synthlane-bench/sites
+      - logs_data:/opt/synthlane-bench/logs
+    depends_on:
+      mariadb:
+        condition: service_healthy
+      redis-cache:
+        condition: service_started
+      redis-queue:
+        condition: service_started
+    restart: unless-stopped
+    command: bench --site synthlane.localhost worker
+
+  # SocketIO Server
+  socketio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - FRAPPE_SITE=synthlane.localhost
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-synthlane_root_pass}
+      - MYSQL_DATABASE=${MYSQL_DATABASE:-synthlane_db}
+      - MYSQL_USER=${MYSQL_USER:-synthlane_user}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD:-synthlane_pass}
+    volumes:
+      - sites_data:/opt/synthlane-bench/sites
+      - logs_data:/opt/synthlane-bench/logs
+    ports:
+      - "9000:9000"
+    depends_on:
+      mariadb:
+        condition: service_healthy
+      redis-cache:
+        condition: service_started
+      redis-queue:
+        condition: service_started
+      redis-socketio:
+        condition: service_started
+    restart: unless-stopped
+    command: bench --site synthlane.localhost socketio
+
+  # Nginx Reverse Proxy
+  nginx:
+    image: nginx:alpine
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - sites_data:/var/www/sites:ro
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - backend
+      - socketio
+    restart: unless-stopped
 
 volumes:
   mariadb_data:
   redis_cache_data:
   redis_queue_data:
   redis_socketio_data:
+  sites_data:
+  logs_data:
