@@ -25,14 +25,20 @@ COPY --chown=frappe:frappe apps/frappe /workspace/frappe-bench/apps/frappe
 COPY --chown=frappe:frappe apps/erpnext /workspace/frappe-bench/apps/erpnext  
 COPY --chown=frappe:frappe apps/synthlane_ims /workspace/frappe-bench/apps/synthlane_ims
 
-# Install the apps
-RUN cd apps/frappe && pip install --no-cache-dir -e . && \
-    cd ../erpnext && pip install --no-cache-dir -e . && \
-    cd ../synthlane_ims && pip install --no-cache-dir -e .
+# Install the apps into the bench virtual environment
+RUN ./env/bin/pip install --no-cache-dir -e ./apps/frappe && \
+    ./env/bin/pip install --no-cache-dir -e ./apps/erpnext && \
+    ./env/bin/pip install --no-cache-dir -e ./apps/synthlane_ims
 
 # Install node dependencies
 RUN cd apps/frappe && yarn install && \
     cd ../erpnext && yarn install
+
+# Register apps with bench
+RUN printf "frappe\nerpnext\nsynthlane_ims\n" > sites/apps.txt
+
+# Build assets for all apps
+RUN bench build --apps frappe erpnext synthlane_ims
 
 # Copy startup script
 USER root
