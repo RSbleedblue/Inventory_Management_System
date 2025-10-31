@@ -64,9 +64,10 @@ services:
       - MYSQL_DATABASE=${MYSQL_DATABASE:-synthlane_db}
       - MYSQL_USER=${MYSQL_USER:-synthlane_user}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD:-synthlane_pass}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin}
     volumes:
-      - sites_data:/opt/synthlane-bench/sites
-      - logs_data:/opt/synthlane-bench/logs
+      - sites_data:/workspace/frappe-bench/sites
+      - logs_data:/workspace/frappe-bench/logs
     ports:
       - "8000:8000"
     depends_on:
@@ -79,12 +80,7 @@ services:
       redis-socketio:
         condition: service_started
     restart: unless-stopped
-    command: >
-      sh -c "
-        bench --site synthlane.localhost migrate &&
-        bench --site synthlane.localhost clear-cache &&
-        bench --site synthlane.localhost serve --port 8000 --host 0.0.0.0
-      "
+    command: ["/workspace/frappe-bench/start.sh"]
 
   # Background Scheduler
   scheduler:
@@ -98,8 +94,8 @@ services:
       - MYSQL_USER=${MYSQL_USER:-synthlane_user}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD:-synthlane_pass}
     volumes:
-      - sites_data:/opt/synthlane-bench/sites
-      - logs_data:/opt/synthlane-bench/logs
+      - sites_data:/workspace/frappe-bench/sites
+      - logs_data:/workspace/frappe-bench/logs
     depends_on:
       mariadb:
         condition: service_healthy
@@ -108,7 +104,7 @@ services:
       redis-queue:
         condition: service_started
     restart: unless-stopped
-    command: bench --site synthlane.localhost schedule
+    command: ["bash", "-c", "cd /workspace/frappe-bench && ls -la && exec bench schedule"]
 
   # Background Worker
   worker:
@@ -122,8 +118,8 @@ services:
       - MYSQL_USER=${MYSQL_USER:-synthlane_user}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD:-synthlane_pass}
     volumes:
-      - sites_data:/opt/synthlane-bench/sites
-      - logs_data:/opt/synthlane-bench/logs
+      - sites_data:/workspace/frappe-bench/sites
+      - logs_data:/workspace/frappe-bench/logs
     depends_on:
       mariadb:
         condition: service_healthy
@@ -132,7 +128,7 @@ services:
       redis-queue:
         condition: service_started
     restart: unless-stopped
-    command: bench --site synthlane.localhost worker
+    command: ["bash", "-c", "cd /workspace/frappe-bench && exec bench worker --queue default,short,long"]
 
   # SocketIO Server
   socketio:
@@ -146,8 +142,8 @@ services:
       - MYSQL_USER=${MYSQL_USER:-synthlane_user}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD:-synthlane_pass}
     volumes:
-      - sites_data:/opt/synthlane-bench/sites
-      - logs_data:/opt/synthlane-bench/logs
+      - sites_data:/workspace/frappe-bench/sites
+      - logs_data:/workspace/frappe-bench/logs
     ports:
       - "9000:9000"
     depends_on:
@@ -160,7 +156,7 @@ services:
       redis-socketio:
         condition: service_started
     restart: unless-stopped
-    command: bench --site synthlane.localhost socketio
+    command: ["bash", "-c", "cd /workspace/frappe-bench && exec node apps/frappe/socketio.js"]
 
   # Nginx Reverse Proxy
   nginx:
