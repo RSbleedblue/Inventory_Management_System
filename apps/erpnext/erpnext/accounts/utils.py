@@ -1445,7 +1445,6 @@ def get_coa(doctype, parent, is_root=None, chart=None):
 	from erpnext.accounts.doctype.account.chart_of_accounts.chart_of_accounts import (
 		build_tree_from_json,
 	)
-
 	# add chart to flags to retrieve when called from expand all function
 	chart = chart if chart else frappe.flags.chart
 	frappe.flags.chart = chart
