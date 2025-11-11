@@ -38,7 +38,7 @@ RUN cd apps/frappe && yarn install && \
 RUN printf "frappe\nerpnext\nsynthlane_ims\n" > sites/apps.txt
 
 # Build assets for all apps
-RUN bench build --apps frappe erpnext synthlane_ims
+RUN bench build
 
 # Copy startup script
 USER root
