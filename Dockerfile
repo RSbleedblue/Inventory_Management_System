@@ -1,52 +1,61 @@
-FROM python:3.11-slim
+FROM frappe/bench:latest
 
-# Install system dependencies
+USER root
+
+# Install additional dependencies
 RUN apt-get update && apt-get install -y \
-    git \
-    curl \
-    wget \
-    build-essential \
-    libjpeg-dev \
-    libssl-dev \
-    libffi-dev \
-    libmysqlclient-dev \
-    pkg-config \
-    xvfb \
-    wkhtmltopdf \
-    nodejs \
-    npm \
-    yarn \
+    mariadb-client \
+    redis-tools \
+    gosu \
     && rm -rf /var/lib/apt/lists/*
 
-# Set working directory
-WORKDIR /opt/synthlane-bench
+# Initialize a new bench
+WORKDIR /workspace
+RUN chown -R frappe:frappe /workspace
 
-# Copy requirements and install Python dependencies
-COPY apps/frappe/setup.py apps/frappe/pyproject.toml ./apps/frappe/
-COPY apps/erpnext/setup.py apps/erpnext/pyproject.toml ./apps/erpnext/
-COPY apps/synthlane_ims/setup.py apps/synthlane_ims/pyproject.toml ./apps/synthlane_ims/
+USER frappe
 
-# Install Frappe and apps
-RUN pip install --no-cache-dir -e ./apps/frappe -e ./apps/erpnext -e ./apps/synthlane_ims
+# Initialize bench
+RUN bench init --skip-redis-config-generation --frappe-branch version-15 frappe-bench
 
-# Copy application code
-COPY . .
+WORKDIR /workspace/frappe-bench
 
-# Install Node.js dependencies
-RUN cd apps/frappe && yarn install --frozen-lockfile && cd ../../
-RUN cd apps/erpnext && yarn install --frozen-lockfile && cd ../../
+# Copy apps into the bench
+COPY --chown=frappe:frappe apps/frappe /workspace/frappe-bench/apps/frappe
+COPY --chown=frappe:frappe apps/erpnext /workspace/frappe-bench/apps/erpnext  
+COPY --chown=frappe:frappe apps/synthlane_ims /workspace/frappe-bench/apps/synthlane_ims
 
-# Build assets
-RUN bench build --force
+# Install the apps into the bench virtual environment
+RUN ./env/bin/pip install --no-cache-dir -e ./apps/frappe && \
+    ./env/bin/pip install --no-cache-dir -e ./apps/erpnext && \
+    ./env/bin/pip install --no-cache-dir -e ./apps/synthlane_ims
 
-# Create necessary directories
-RUN mkdir -p sites logs
+# Install node dependencies
+RUN cd apps/frappe && yarn install && \
+    cd ../erpnext && yarn install
 
-# Set permissions
-RUN chmod +x Procfile
+# Register apps with bench
+RUN printf "frappe\nerpnext\nsynthlane_ims\n" > sites/apps.txt
+
+# Build assets for all apps
+RUN bench build --apps frappe erpnext synthlane_ims
+
+# Copy startup script
+USER root
+COPY docker-entrypoint.sh /usr/local/bin/
+COPY start.sh /workspace/frappe-bench/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh /workspace/frappe-bench/start.sh && \
+    chown frappe:frappe /workspace/frappe-bench/start.sh
+
+# Create directories and fix permissions
+RUN mkdir -p /workspace/frappe-bench/logs /workspace/frappe-bench/sites && \
+    chown -R frappe:frappe /workspace/frappe-bench
 
 # Expose ports
 EXPOSE 8000 9000
 
+# Set entrypoint
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
+
 # Default command
-CMD ["bench", "--site", "synthlane.localhost", "serve", "--port", "8000", "--host", "0.0.0.0"]
+CMD ["/workspace/frappe-bench/start.sh"]
