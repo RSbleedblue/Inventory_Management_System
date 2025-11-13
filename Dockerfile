@@ -7,7 +7,11 @@ RUN apt-get update && apt-get install -y \
     mariadb-client \
     redis-tools \
     gosu \
+    python3-pip \
     && rm -rf /var/lib/apt/lists/*
+
+# Install watchdog for file watching
+RUN pip3 install --no-cache-dir watchdog
 
 # Initialize a new bench
 WORKDIR /workspace
@@ -44,8 +48,9 @@ RUN bench build
 USER root
 COPY docker-entrypoint.sh /usr/local/bin/
 COPY start.sh /workspace/frappe-bench/
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh /workspace/frappe-bench/start.sh && \
-    chown frappe:frappe /workspace/frappe-bench/start.sh
+COPY reload-doc-watcher.py /workspace/frappe-bench/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh /workspace/frappe-bench/start.sh /workspace/frappe-bench/reload-doc-watcher.py && \
+    chown frappe:frappe /workspace/frappe-bench/start.sh /workspace/frappe-bench/reload-doc-watcher.py
 
 # Create directories and fix permissions
 RUN mkdir -p /workspace/frappe-bench/logs /workspace/frappe-bench/sites && \

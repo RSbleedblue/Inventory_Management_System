@@ -127,7 +127,12 @@ def import_file_by_path(
 				get_datetime(doc.get("modified")) <= get_datetime(db_modified_timestamp)
 			)
 
-			if not force and db_modified_timestamp:
+			# For Onboarding Step in developer mode, always reload regardless of timestamps/hash
+			# This ensures changes are always reflected during development
+			should_skip = False
+			if doc.get("doctype") == "Onboarding Step" and frappe.conf.developer_mode:
+				should_skip = False  # Never skip in developer mode
+			elif not force and db_modified_timestamp:
 				stored_hash = None
 				if doc["doctype"] == "DocType":
 					try:
@@ -137,11 +142,14 @@ def import_file_by_path(
 
 				# if hash exists and is equal no need to update
 				if stored_hash and stored_hash == calculated_hash:
-					continue
+					should_skip = True
 
 				# if hash doesn't exist, check if db timestamp is same as json timestamp, add hash if from doctype
 				if is_db_timestamp_latest and doc["doctype"] != "DocType":
-					continue
+					should_skip = True
+			
+			if should_skip:
+				continue
 
 			import_doc(
 				docdict=doc,
@@ -237,6 +245,12 @@ def import_doc(
 		doc.flags.ignore_mandatory = True
 
 	doc.insert()
+	
+	# Clear cache for Onboarding Step to ensure fresh data is served
+	if doc.doctype == "Onboarding Step":
+		frappe.clear_cache(doctype="Onboarding Step")
+		# Also clear document cache specifically
+		frappe.cache.delete_value(f"document_cache::{doc.doctype}::{doc.name}")
 
 	frappe.flags.in_import = False
 

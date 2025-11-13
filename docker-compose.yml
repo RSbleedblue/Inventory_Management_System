@@ -63,9 +63,14 @@ services:
       - MYSQL_USER=${MYSQL_USER:-synthlane_user}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD:-synthlane_pass}
       - ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin}
+      - PYTHONUNBUFFERED=1
     volumes:
       - sites_data:/workspace/frappe-bench/sites
       - logs_data:/workspace/frappe-bench/logs
+      # Mount apps for hot-reloading
+      - ./apps/frappe:/workspace/frappe-bench/apps/frappe
+      - ./apps/erpnext:/workspace/frappe-bench/apps/erpnext
+      - ./apps/synthlane_ims:/workspace/frappe-bench/apps/synthlane_ims
     ports:
       - "8000:8000"
     depends_on:
@@ -94,6 +99,10 @@ services:
     volumes:
       - sites_data:/workspace/frappe-bench/sites
       - logs_data:/workspace/frappe-bench/logs
+      # Mount apps for hot-reloading
+      - ./apps/frappe:/workspace/frappe-bench/apps/frappe
+      - ./apps/erpnext:/workspace/frappe-bench/apps/erpnext
+      - ./apps/synthlane_ims:/workspace/frappe-bench/apps/synthlane_ims
     depends_on:
       mariadb:
         condition: service_healthy
@@ -118,6 +127,10 @@ services:
     volumes:
       - sites_data:/workspace/frappe-bench/sites
       - logs_data:/workspace/frappe-bench/logs
+      # Mount apps for hot-reloading
+      - ./apps/frappe:/workspace/frappe-bench/apps/frappe
+      - ./apps/erpnext:/workspace/frappe-bench/apps/erpnext
+      - ./apps/synthlane_ims:/workspace/frappe-bench/apps/synthlane_ims
     depends_on:
       mariadb:
         condition: service_healthy
@@ -142,6 +155,10 @@ services:
     volumes:
       - sites_data:/workspace/frappe-bench/sites
       - logs_data:/workspace/frappe-bench/logs
+      # Mount apps for hot-reloading
+      - ./apps/frappe:/workspace/frappe-bench/apps/frappe
+      - ./apps/erpnext:/workspace/frappe-bench/apps/erpnext
+      - ./apps/synthlane_ims:/workspace/frappe-bench/apps/synthlane_ims
     ports:
       - "9000:9000"
     depends_on:
@@ -155,6 +172,60 @@ services:
         condition: service_started
     restart: unless-stopped
     command: ["bash", "-c", "cd /workspace/frappe-bench && exec node apps/frappe/socketio.js"]
+
+  # Asset Watcher (for frontend hot-reloading)
+  watch:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - FRAPPE_SITE=synthlane.localhost
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-synthlane_root_pass}
+      - MYSQL_DATABASE=${MYSQL_DATABASE:-synthlane_db}
+      - MYSQL_USER=${MYSQL_USER:-synthlane_user}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD:-synthlane_pass}
+    volumes:
+      - sites_data:/workspace/frappe-bench/sites
+      - logs_data:/workspace/frappe-bench/logs
+      # Mount apps for hot-reloading
+      - ./apps/frappe:/workspace/frappe-bench/apps/frappe
+      - ./apps/erpnext:/workspace/frappe-bench/apps/erpnext
+      - ./apps/synthlane_ims:/workspace/frappe-bench/apps/synthlane_ims
+    depends_on:
+      mariadb:
+        condition: service_healthy
+      redis-cache:
+        condition: service_started
+      redis-queue:
+        condition: service_started
+    restart: unless-stopped
+    command: ["bash", "-c", "cd /workspace/frappe-bench && exec bench watch"]
+
+  # JSON DocType Reload Watcher (for automatic reload-doc on JSON changes)
+  reload-watcher:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - FRAPPE_SITE=synthlane.localhost
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-synthlane_root_pass}
+      - MYSQL_DATABASE=${MYSQL_DATABASE:-synthlane_db}
+      - MYSQL_USER=${MYSQL_USER:-synthlane_user}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD:-synthlane_pass}
+    volumes:
+      - sites_data:/workspace/frappe-bench/sites
+      - logs_data:/workspace/frappe-bench/logs
+      # Mount apps for hot-reloading
+      - ./apps/frappe:/workspace/frappe-bench/apps/frappe
+      - ./apps/erpnext:/workspace/frappe-bench/apps/erpnext
+      - ./apps/synthlane_ims:/workspace/frappe-bench/apps/synthlane_ims
+    depends_on:
+      mariadb:
+        condition: service_healthy
+      backend:
+        condition: service_started
+    restart: unless-stopped
+    command: ["bash", "-c", "cd /workspace/frappe-bench && exec python3 reload-doc-watcher.py"]
 
   # Nginx Reverse Proxy
   nginx:

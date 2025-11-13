@@ -53,7 +53,18 @@ class OnboardingStep(Document):
 def get_onboarding_steps(ob_steps):
 	steps = []
 	for s in json.loads(ob_steps):
-		doc = frappe.get_doc("Onboarding Step", s.get("step"))
+		step_name = s.get("step")
+		
+		# Clear cache before fetching to ensure fresh data
+		frappe.clear_cache(doctype="Onboarding Step")
+		frappe.cache.delete_value(f"document_cache::Onboarding Step::{step_name}")
+		
+		# Get fresh document from database
+		doc = frappe.get_doc("Onboarding Step", step_name)
+		
+		# Force reload from database (bypass any local cache)
+		frappe.db.clear_cache()
+		
 		step = doc.as_dict().copy()
 		step.label = _(doc.title)
 		if step.action == "Create Entry":
